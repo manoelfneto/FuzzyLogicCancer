@@ -122,5 +122,5 @@ chance_simulator.input['vacina_hpv'] = 0
 
 chance_simulator.compute()
 print(chance_simulator.output['chance'])
-# chance.view(sim=chance_simulator)
+chance.view(sim=chance_simulator)
 print('acabou')
