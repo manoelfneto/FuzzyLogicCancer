@@ -37,19 +37,19 @@ idade_primeira_relacao['jovem/adult'] = fuzz.trapmf(idade_primeira_relacao.unive
 # alimentacao['Ideal'] = fuzz.trimf(alimentacao.universe, [4, 6, 7])
 # alimentacao.view()
 
-ist = ctrl.Antecedent(np.arange(0, 5, 0.5), 'ist')
+ist = ctrl.Antecedent(np.arange(0, 5, 1), 'ist')
 ist['fraco'] = fuzz.trimf(ist.universe, [0, 0, 1])
-ist['medio'] = fuzz.trimf(ist.universe, [1, 2, 3])
+ist['medio'] = fuzz.trimf(ist.universe, [0, 2, 3])
 ist['forte'] = fuzz.trimf(ist.universe, [2, 3, 4])
 # ist.view()
 
-fumante = ctrl.Antecedent(np.arange(0, 5, 1), 'fumante')
+fumante = ctrl.Antecedent(np.arange(0, 2, 1), 'fumante')
 fumante.automf(names=['sim', 'nao'])
 # fumante.view()
 
 historico_familiar = ctrl.Antecedent(np.arange(0, 11, 1), 'historico_familiar')
 historico_familiar['fraco'] = fuzz.trimf(historico_familiar.universe, [0, 0, 2])
-historico_familiar['medio'] = fuzz.trimf(historico_familiar.universe, [2, 4, 6])
+historico_familiar['medio'] = fuzz.trimf(historico_familiar.universe, [1, 4, 6])
 historico_familiar['forte'] = fuzz.trimf(historico_familiar.universe, [5, 10, 10])
 # historico_familiar.view()
 
@@ -91,12 +91,12 @@ vacina_hpv.automf(names=['sim', 'nao'])
 # vacina_hpv.view()
 
 
-chance = ctrl.Consequent(np.arange(0, 120, 1), 'chance')
-chance['muito baixa'] = fuzz.trapmf(chance.universe, [0, 0, 15, 22])
-chance['baixa'] = fuzz.trimf(chance.universe, [18, 29, 40])
-chance['moderada'] = fuzz.trimf(chance.universe, [36, 47, 58])
-chance['alta'] = fuzz.trimf(chance.universe, [54, 76, 99])
-chance['muito alta'] = fuzz.trapmf(chance.universe, [95, 100, 120, 120])
+chance = ctrl.Consequent(np.arange(0, 55, 1), 'chance')
+chance['muito baixa'] = fuzz.trapmf(chance.universe, [0, 0, 5, 12])
+chance['baixa'] = fuzz.trimf(chance.universe, [9, 15, 20])
+chance['moderada'] = fuzz.trimf(chance.universe, [17, 23, 29])
+chance['alta'] = fuzz.trimf(chance.universe, [26, 40, 52])
+chance['muito alta'] = fuzz.trapmf(chance.universe, [49, 52, 55, 55])
 # chance.view()
 
 archive = open('rules2.csv', 'r')
@@ -106,21 +106,26 @@ rules = []
 for x in content:
     a = x.rstrip('\n')
     rules.append(eval(a))
-# rules.pop(0)
-# print(rules)
 
 chance_ctrl = ctrl.ControlSystem(rules)
 chance_simulator = ctrl.ControlSystemSimulation(chance_ctrl)
 
-chance_simulator.input['idade'] = 6
-chance_simulator.input['idade_primeira_relacao'] = 7
-chance_simulator.input['historico_familiar'] = 4
+chance_simulator.input['idade'] = 28
+chance_simulator.input['idade_primeira_relacao'] = 12
+chance_simulator.input['historico_familiar'] = 2
 chance_simulator.input['ist'] = 1
 chance_simulator.input['fumante'] = 1
-chance_simulator.input['parceiros'] = 4
+chance_simulator.input['parceiros'] = 2
 chance_simulator.input['vacina_hpv'] = 0
 
 chance_simulator.compute()
 print(chance_simulator.output['chance'])
 chance.view(sim=chance_simulator)
+idade.view(sim=chance_simulator)
+idade_primeira_relacao.view(sim=chance_simulator)
+historico_familiar.view(sim=chance_simulator)
+ist.view(sim=chance_simulator)
+fumante.view(sim=chance_simulator)
+parceiros.view(sim=chance_simulator)
+vacina_hpv.view(sim=chance_simulator)
 print('acabou')

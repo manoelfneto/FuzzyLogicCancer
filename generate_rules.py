@@ -57,24 +57,24 @@ for x in regras:
         points += 1
     archive = open('rules2.csv', 'a')
     if points < 9:
-        escrever = "ctrl.Rule(idade['%s'] | idade_primeira_relacao['%s'] | ist['%s'] | fumante['%s'] | " \
-                   "historico_familiar['%s'] | parceiros['%s'] | vacina_hpv['%s'], chance['muito baixa'])" % \
+        escrever = "ctrl.Rule(idade['%s'] & idade_primeira_relacao['%s'] & ist['%s'] & fumante['%s'] & " \
+                   "historico_familiar['%s'] & parceiros['%s'] & vacina_hpv['%s'], chance['muito baixa'])" % \
                    (crop[0], crop[1], crop[2], crop[3], crop[4], crop[5], crop[6]) + "\n"
     if 10 <= points <= 14:
-        escrever = "ctrl.Rule(idade['%s'] | idade_primeira_relacao['%s'] | ist['%s'] | fumante['%s'] | " \
-                   "historico_familiar['%s'] | parceiros['%s'] | vacina_hpv['%s'], chance['baixa'])" % \
+        escrever = "ctrl.Rule(idade['%s'] & idade_primeira_relacao['%s'] & ist['%s'] & fumante['%s'] & " \
+                   "historico_familiar['%s'] & parceiros['%s'] & vacina_hpv['%s'], chance['baixa'])" % \
                    (crop[0], crop[1], crop[2], crop[3], crop[4], crop[5], crop[6]) + "\n"
     if 15 <= points <= 19:
-        escrever = "ctrl.Rule(idade['%s'] | idade_primeira_relacao['%s'] | ist['%s'] | fumante['%s'] | " \
-                   "historico_familiar['%s'] | parceiros['%s'] | vacina_hpv['%s'], chance['moderada'])" % \
+        escrever = "ctrl.Rule(idade['%s'] & idade_primeira_relacao['%s'] & ist['%s'] & fumante['%s'] & " \
+                   "historico_familiar['%s'] & parceiros['%s'] & vacina_hpv['%s'], chance['moderada'])" % \
                    (crop[0], crop[1], crop[2], crop[3], crop[4], crop[5], crop[6]) + "\n"
     if 20 <= points <= 27:
-        escrever = "ctrl.Rule(idade['%s'] | idade_primeira_relacao['%s'] | ist['%s'] | fumante['%s'] | " \
-                   "historico_familiar['%s'] | parceiros['%s'] | vacina_hpv['%s'], chance['alta'])" % \
+        escrever = "ctrl.Rule(idade['%s'] & idade_primeira_relacao['%s'] & ist['%s'] & fumante['%s'] & " \
+                   "historico_familiar['%s'] & parceiros['%s'] & vacina_hpv['%s'], chance['alta'])" % \
                    (crop[0], crop[1], crop[2], crop[3], crop[4], crop[5], crop[6]) + "\n"
     if points > 27:
-        escrever = "ctrl.Rule(idade['%s'] | idade_primeira_relacao['%s'] | ist['%s'] | fumante['%s'] | " \
-                   "historico_familiar['%s'] | parceiros['%s'] | vacina_hpv['%s'], chance['muito alta'])" % \
+        escrever = "ctrl.Rule(idade['%s'] & idade_primeira_relacao['%s'] & ist['%s'] & fumante['%s'] & " \
+                   "historico_familiar['%s'] & parceiros['%s'] & vacina_hpv['%s'], chance['muito alta'])" % \
                    (crop[0], crop[1], crop[2], crop[3], crop[4], crop[5], crop[6]) + "\n"
 
     archive.write(escrever)
