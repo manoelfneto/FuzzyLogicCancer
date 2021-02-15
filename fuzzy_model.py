@@ -13,30 +13,6 @@ idade_primeira_relacao['crianca/adolesc'] = fuzz.trapmf(idade_primeira_relacao.u
 idade_primeira_relacao['jovem/adult'] = fuzz.trapmf(idade_primeira_relacao.universe, [15, 20, 50, 50])
 # idade_primeira_relacao.view()
 
-
-# gestacoes = ctrl.Antecedent(np.arange(0, 8, 1), 'gestacoes')
-# gestacoes['poucos'] = fuzz.trapmf(gestacoes.universe, [0, 0, 1, 2])
-# gestacoes['alguns'] = fuzz.trimf(gestacoes.universe, [2, 3.5, 5])
-# gestacoes['muitos'] = fuzz.trapmf(gestacoes.universe, [4, 6, 7, 8])
-# gestacoes.view()
-#
-# abortos = ctrl.Antecedent(np.arange(0, 8, 1), 'abortos')
-# abortos['poucos'] = fuzz.trapmf(abortos.universe, [0, 0, 1, 2])
-# abortos['alguns'] = fuzz.trimf(abortos.universe, [2, 3.5, 5])
-# abortos['muitos'] = fuzz.trapmf(abortos.universe, [4, 6, 7, 8])
-# abortos.view()
-#
-# partos = ctrl.Antecedent(np.arange(0, 8, 1), 'partos')
-# partos['poucos'] = fuzz.trapmf(partos.universe, [0, 0, 1, 2])
-# partos['alguns'] = fuzz.trimf(partos.universe, [2, 3.5, 5])
-# partos['muitos'] = fuzz.trapmf(partos.universe, [4, 6, 7, 8])
-# partos.view()
-
-# alimentacao = ctrl.Antecedent(np.arange(0, 7, 1), 'alimentacao')
-# alimentacao['Pouco'] = fuzz.trimf(alimentacao.universe, [0, 3, 5])
-# alimentacao['Ideal'] = fuzz.trimf(alimentacao.universe, [4, 6, 7])
-# alimentacao.view()
-
 ist = ctrl.Antecedent(np.arange(0, 5, 1), 'ist')
 ist['fraco'] = fuzz.trimf(ist.universe, [0, 0, 1])
 ist['medio'] = fuzz.trimf(ist.universe, [0, 2, 3])
@@ -53,38 +29,11 @@ historico_familiar['medio'] = fuzz.trimf(historico_familiar.universe, [1, 4, 6])
 historico_familiar['forte'] = fuzz.trimf(historico_familiar.universe, [5, 10, 10])
 # historico_familiar.view()
 
-
-# diabetes = ctrl.Antecedent(np.arange(0, 2, 1), 'diabates')
-# diabetes.automf(names=['sim', 'não'])
-# diabetes.view()
-#
-# hipertensao = ctrl.Antecedent(np.arange(0, 2, 1), 'hipertensao')
-# hipertensao.automf(names=['sim', 'não'])
-# hipertensao.view()
-
-# corticoides = ctrl.Antecedent(np.arange(0, 2, 1), 'conticoides')
-# corticoides.automf(names=['sim', 'não'])
-# corticoides.view()
-
 parceiros = ctrl.Antecedent(np.arange(0, 10, 1), 'parceiros')
 parceiros['pouco'] = fuzz.trapmf(parceiros.universe, [0, 0, 2, 5])
 parceiros['moderado'] = fuzz.trimf(parceiros.universe, [3, 5, 7])
 parceiros['muito'] = fuzz.trapmf(parceiros.universe, [6, 8, 10, 10])
 # parceiros.view()
-
-
-# preservativo = ctrl.Antecedent(np.arange(0, 2, 1), 'preservativo')
-# preservativo.automf(names=['sim', 'não'])
-# preservativo.view()
-
-# teste_hpv = ctrl.Antecedent(np.arange(0, 4, 1), 'teste_hpv')
-# teste_hpv['negativo'] = fuzz.trimf(teste_hpv.universe, [0,0,1])
-# teste_hpv['oncogenico'] = fuzz.trimf(teste_hpv.universe, [1,2,2])
-# teste_hpv['não oncogenico'] = fuzz.trimf(teste_hpv.universe, [2,3,3])
-# teste_hpv.view()
-
-# papaniculau = ctrl.Antecedent(np.arange(), 'papaniculau')
-# colposcopia = ctrl.Antecedent(np.arange(), 'colposcopia')
 
 vacina_hpv = ctrl.Antecedent(np.arange(0, 2, 1), 'vacina_hpv')
 vacina_hpv.automf(names=['sim', 'nao'])
