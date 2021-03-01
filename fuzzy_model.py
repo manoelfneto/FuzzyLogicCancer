@@ -16,23 +16,23 @@ idade_primeira_relacao['jovem/adult'] = fuzz.trapmf(idade_primeira_relacao.unive
 ist = ctrl.Antecedent(np.arange(0, 5, 1), 'ist')
 ist['fraco'] = fuzz.trimf(ist.universe, [0, 0, 1])
 ist['medio'] = fuzz.trimf(ist.universe, [0, 2, 3])
-ist['forte'] = fuzz.trimf(ist.universe, [2, 3, 4])
+ist['forte'] = fuzz.trimf(ist.universe, [2, 4, 4])
 # ist.view()
 
 fumante = ctrl.Antecedent(np.arange(0, 2, 1), 'fumante')
 fumante.automf(names=['sim', 'nao'])
 # fumante.view()
 
-historico_familiar = ctrl.Antecedent(np.arange(0, 11, 1), 'historico_familiar')
+historico_familiar = ctrl.Antecedent(np.arange(0, 8, 1), 'historico_familiar')
 historico_familiar['fraco'] = fuzz.trimf(historico_familiar.universe, [0, 0, 2])
-historico_familiar['medio'] = fuzz.trimf(historico_familiar.universe, [1, 4, 6])
-historico_familiar['forte'] = fuzz.trimf(historico_familiar.universe, [5, 10, 10])
+historico_familiar['medio'] = fuzz.trimf(historico_familiar.universe, [1, 4, 5])
+historico_familiar['forte'] = fuzz.trimf(historico_familiar.universe, [4, 7, 7])
 # historico_familiar.view()
 
-parceiros = ctrl.Antecedent(np.arange(0, 10, 1), 'parceiros')
-parceiros['pouco'] = fuzz.trapmf(parceiros.universe, [0, 0, 2, 5])
-parceiros['moderado'] = fuzz.trimf(parceiros.universe, [3, 5, 7])
-parceiros['muito'] = fuzz.trapmf(parceiros.universe, [6, 8, 10, 10])
+parceiros = ctrl.Antecedent(np.arange(0, 25, 1), 'parceiros')
+parceiros['pouco'] = fuzz.trapmf(parceiros.universe, [0, 0, 2, 7])
+parceiros['moderado'] = fuzz.trimf(parceiros.universe, [5, 11, 18])
+parceiros['muito'] = fuzz.trapmf(parceiros.universe, [15, 20, 25, 25])
 # parceiros.view()
 
 vacina_hpv = ctrl.Antecedent(np.arange(0, 2, 1), 'vacina_hpv')
@@ -59,13 +59,13 @@ for x in content:
 chance_ctrl = ctrl.ControlSystem(rules)
 chance_simulator = ctrl.ControlSystemSimulation(chance_ctrl)
 
-chance_simulator.input['idade'] = 28
-chance_simulator.input['idade_primeira_relacao'] = 12
-chance_simulator.input['historico_familiar'] = 2
-chance_simulator.input['ist'] = 1
+chance_simulator.input['idade'] = 65
+chance_simulator.input['idade_primeira_relacao'] = 14
+chance_simulator.input['historico_familiar'] = 6
+chance_simulator.input['ist'] = 3
 chance_simulator.input['fumante'] = 1
-chance_simulator.input['parceiros'] = 2
-chance_simulator.input['vacina_hpv'] = 0
+chance_simulator.input['parceiros'] = 17
+chance_simulator.input['vacina_hpv'] = 1
 
 chance_simulator.compute()
 print(chance_simulator.output['chance'])
